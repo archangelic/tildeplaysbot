@@ -16,6 +16,12 @@ cmds = [
     'select',
 ]
 
+# poverty logger
+def tp_logger(nick, text):
+    print('<'+nick+'>', text)
+    with open('log_tildeplays.log', 'a') as f:
+        f.write('<'+nick+'> '+text)
+
 def presskey(key):
     k.press_key(key)
     time.sleep(0.15)
@@ -24,8 +30,10 @@ def presskey(key):
 def run(nick, text):
     x, y = m.screen_size()
     m.click(x//2, y//2, 1)
+    if text.startswith('!ff'):
+        tp_logger(nick, text)
     if text in cmds:
-        print(nick, text)
+        tp_logger(nick, text)
         if text == 'up':
             presskey(k.up_key)
         elif text == 'down':
