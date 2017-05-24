@@ -1,0 +1,16 @@
+inflect==0.2.5
+irc==15.1.1
+jaraco.classes==1.4.1
+jaraco.collections==1.5.1
+jaraco.functools==1.16
+jaraco.itertools==2.0.1
+jaraco.logging==1.5
+jaraco.stream==1.1.2
+jaraco.text==1.9.2
+more-itertools==3.1.0
+pkg-resources==0.0.0
+python-xlib==0.19
+pytz==2017.2
+PyUserInput==0.1.11
+six==1.10.0
+tempora==1.7
