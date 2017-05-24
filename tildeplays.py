@@ -20,7 +20,7 @@ cmds = [
 def tp_logger(nick, text):
     print('<'+nick+'>', text)
     with open('log_tildeplays.log', 'a') as f:
-        f.write('<'+nick+'> '+text)
+        f.write('<'+nick+'> '+text+'\n')
 
 def presskey(key):
     k.press_key(key)
