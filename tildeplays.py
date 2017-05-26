@@ -15,13 +15,17 @@ cmds = [
     'b',
     'start',
     'select',
+    'save',
+    'reload',
 ]
 
+# clear the screen
+print('\n' * 100)
 
 # poverty logger
 def tp_logger(nick, text):
     stamp = datetime.now().strftime('[%m.%d.%y %H:%M:%S] ')
-    print(stamp + '<' + nick + '> ', text)
+    print('<' + nick + '> ', text)
     with open('log_tildeplays.log', 'a') as f:
         f.write(stamp + '<' + nick + '> ' + text + '\n')
 
@@ -35,6 +39,9 @@ def presskey(key):
 def run(nick, text):
     x, y = m.screen_size()
     m.click(x // 2, y // 2, 1)
+    if text.startswith('tildeplaysbot:'):
+        text = ''.join([i + ' ' for i in text.split(' ')[1:]]).strip()
+        tp_logger(nick, text)
     if text.startswith('!ff'):
         tp_logger(nick, text)
     if text in cmds:
@@ -55,5 +62,9 @@ def run(nick, text):
             presskey(k.return_key)
         elif text == 'select':
             presskey(k.shift_key)
+        elif text == 'save':
+            presskey(k.function_keys[5])
+        elif text == 'reload':
+            presskey(k.function_keys[7])
     else:
         pass
