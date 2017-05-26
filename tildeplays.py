@@ -1,3 +1,4 @@
+from datetime import datetime
 import time
 
 from pykeyboard import PyKeyboard
@@ -16,20 +17,24 @@ cmds = [
     'select',
 ]
 
+
 # poverty logger
 def tp_logger(nick, text):
-    print('<'+nick+'>', text)
+    stamp = datetime.now().strftime('[%m.%d.%y %H:%M:%S] ')
+    print(stamp + '<' + nick + '> ', text)
     with open('log_tildeplays.log', 'a') as f:
-        f.write('<'+nick+'> '+text+'\n')
+        f.write(stamp + '<' + nick + '> ' + text + '\n')
+
 
 def presskey(key):
     k.press_key(key)
     time.sleep(0.15)
     k.release_key(key)
 
+
 def run(nick, text):
     x, y = m.screen_size()
-    m.click(x//2, y//2, 1)
+    m.click(x // 2, y // 2, 1)
     if text.startswith('!ff'):
         tp_logger(nick, text)
     if text in cmds:
