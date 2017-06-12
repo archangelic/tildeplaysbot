@@ -19,6 +19,19 @@ cmds = [
     'reload',
 ]
 
+cmdkeys = [
+    k.up_key,
+    k.down_key,
+    k.left_key,
+    k.right_key,
+    'a',
+    'b',
+    k.return_key,
+    k.shift_key,
+    k.function_keys[5],
+    k.function_keys[7],
+]
+
 # clear the screen
 print('\n' * 100)
 
@@ -46,25 +59,6 @@ def run(nick, text):
         tp_logger(nick, text)
     if text in cmds:
         tp_logger(nick, text)
-        if text == 'up':
-            presskey(k.up_key)
-        elif text == 'down':
-            presskey(k.down_key)
-        elif text == 'left':
-            presskey(k.left_key)
-        elif text == 'right':
-            presskey(k.right_key)
-        elif text == 'a':
-            presskey(text)
-        elif text == 'b':
-            presskey(text)
-        elif text == 'start':
-            presskey(k.return_key)
-        elif text == 'select':
-            presskey(k.shift_key)
-        elif text == 'save':
-            presskey(k.function_keys[5])
-        elif text == 'reload':
-            presskey(k.function_keys[7])
+        presskey(cmdkeys[cmds.index(text)])
     else:
         pass
