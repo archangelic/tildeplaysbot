@@ -23,6 +23,9 @@ class TVBot(irc.bot.SingleServerIRCBot):
     def process_command(self, c, e, text):
         nick = e.source.nick
         tildeplays.run(nick, text)
+        if text.strip() == '!games':
+            c.privmsg(e.target, 'Play along with us by typing up, down, left, right, a, b, start, select, save, or reload')
+
 
 
 if __name__ == '__main__':
