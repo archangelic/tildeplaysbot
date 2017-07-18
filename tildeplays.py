@@ -1,4 +1,5 @@
 from datetime import datetime
+from textwrap import wrap
 import time
 
 from pykeyboard import PyKeyboard
@@ -41,6 +42,11 @@ def tp_logger(nick, text):
     print('<' + nick + '> ', text)
     with open('log_tildeplays.log', 'a') as f:
         f.write(stamp + '<' + nick + '> ' + text + '\n')
+    line = '<' + nick + '>  ' + text
+    output = wrap(line, width=25)
+    with open('log.txt', 'a') as chat:
+        for i in output:
+            chat.write(i + '\n')
 
 
 def presskey(key):
