@@ -6,31 +6,16 @@ import subprocess
 from pykeyboard import PyKeyboard
 
 k = PyKeyboard()
-cmds = [
-    'up',
-    'down',
-    'left',
-    'right',
-    'a',
-    'b',
-    'start',
-    'select',
-    'save',
-    'reload',
-]
-
-cmdkeys = [
-    k.up_key,
-    k.down_key,
-    k.left_key,
-    k.right_key,
-    'a',
-    'b',
-    k.return_key,
-    k.shift_key,
-    k.function_keys[5],
-    k.function_keys[7],
-]
+cmds = {'up': k.up_key, 
+        'down': k.down_key,
+        'left': k.left_key,
+        'right': k.right_key,
+        'a': 'a',
+        'b': 'b',
+        'start': k.return_key,
+        'select': k.shift_key,
+        'save': k.function_keys[5],
+        'reload': k.function_keys[7]}
 
 # clear the screen
 print('\n' * 100)
@@ -63,6 +48,6 @@ def run(nick, text):
         tp_logger(nick, text)
     if text in cmds:
         tp_logger(nick, text)
-        presskey(cmdkeys[cmds.index(text)])
+        presskey(cmds[text])
     else:
         pass
