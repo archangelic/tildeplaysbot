@@ -1,12 +1,11 @@
 from datetime import datetime
 from textwrap import wrap
 import time
+import subprocess
 
 from pykeyboard import PyKeyboard
-from pymouse import PyMouse
 
 k = PyKeyboard()
-m = PyMouse()
 cmds = [
     'up',
     'down',
@@ -56,8 +55,7 @@ def presskey(key):
 
 
 def run(nick, text):
-    x, y = m.screen_size()
-    m.click(x // 2, y // 2, 1)
+    subprocess.call('xdotool search --name "FCEUX 2.2.2" windowactivate', shell=True)
     if text.startswith('tildeplaysbot:'):
         text = ''.join([i + ' ' for i in text.split(' ')[1:]]).strip()
         tp_logger(nick, text)
