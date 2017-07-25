@@ -1,4 +1,5 @@
 from datetime import datetime
+from os import environ, path
 from textwrap import wrap
 import time
 import subprocess
@@ -6,7 +7,7 @@ import subprocess
 from pykeyboard import PyKeyboard
 
 k = PyKeyboard()
-cmds = {'up': k.up_key, 
+cmds = {'up': k.up_key,
         'down': k.down_key,
         'left': k.left_key,
         'right': k.right_key,
@@ -41,11 +42,13 @@ def presskey(key):
 
 def run(nick, text):
     subprocess.call('xdotool search --name "FCEUX 2.2.2" windowactivate', shell=True)
-    if text.startswith('tildeplaysbot:'):
+    if text.startswith(('tildeplaysbot:', '!ff')):
         text = ''.join([i + ' ' for i in text.split(' ')[1:]]).strip()
         tp_logger(nick, text)
-    if text.startswith('!ff'):
-        tp_logger(nick, text)
+    if text == 'power':
+        game = path.join(environ['HOME'], 'Final Fantasy (USA).nes')
+        subprocess.call('fceux "{}" &'.format(game), shell=True)
+        subprocess.call('obs --startstreaming &', shell=True)
     if text in cmds:
         tp_logger(nick, text)
         presskey(cmds[text])
