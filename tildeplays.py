@@ -18,6 +18,7 @@ cmds = {'up': k.up_key,
         'reload': k.function_keys[7]}
 
 active = False
+op = "archangelic"
 
 # clear the screen
 print('\n' * 100)
