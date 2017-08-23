@@ -1,7 +1,10 @@
 from datetime import datetime
 from os import environ, path
 from textwrap import wrap
-import time,subprocess,launch,traceback
+import time
+import subprocess
+import launch
+import traceback
 
 from pykeyboard import PyKeyboard
 
