@@ -33,10 +33,15 @@ launchedprocesses = dict()
 
 def launch(name,cmd):
     global launchedprocesses
-    launchedprocesses[name] = Process(cmd)
+    if not isRunning(name):
+        launchedprocesses[name] = Process(cmd)
 
 def kill(name):
     global launchedprocesses
-    if launchedprocesses[name]:
+    if isRunning(name):
         launchedprocesses[name].kill()
         del launchedprocesses[name]
+
+def isRunning(name):
+    global launchedprocesses
+    return launchedprocesses.get(name,None) is not None
