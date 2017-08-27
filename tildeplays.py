@@ -58,8 +58,8 @@ def run(nick, text):
             tp_logger(nick, text)
         if text == 'power':
             game = path.join(environ['HOME'], 'Final Fantasy (USA).nes')
-            launch.launch('game','fceux "{}" &'.format(game), shell=True)
-            launch.launch('stream','obs --startstreaming &', shell=True)
+            launch.launch('game','fceux "{}" &'.format(game))
+            launch.launch('stream','obs --startstreaming &')
             active = True
         if text == 'shutdown' and nick == op:
             launch.kill('stream') # kill stream before game
