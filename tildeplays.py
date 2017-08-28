@@ -58,7 +58,7 @@ def run(nick, text):
             tp_logger(nick, text)
         if text == 'power':
             game = path.join(environ['HOME'], 'Final Fantasy (USA).nes')
-            launch.launch('game','fceux "{}" &'.format(game))
+            launch.launch('game','fceux "{}"'.format(game))
             launch.launch('stream','obs --startstreaming &')
             active = True
         if text == 'shutdown' and nick == op:
@@ -72,8 +72,8 @@ def run(nick, text):
                 return 'Make sure to power on the bot first! (power)'
             tp_logger(nick, text)
             presskey(cmds[text])
-       else:
-           pass
+        else:
+            pass
     except Exception as e:
         errorlog(e)
         return 'An error occurred. {} should check the error log and file an issue at github.com/archangelic/tildeplays.'.format(op)

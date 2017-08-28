@@ -25,7 +25,7 @@ class Process:
         args = shlex.split(cmd)
         args[0] = which(args[0])
         self.pid = subprocess.Popen(args).pid
-    
+
     def kill(self):
         psutil.Process(self.pid).kill()
 
