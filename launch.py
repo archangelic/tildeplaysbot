@@ -22,9 +22,7 @@ def which(program):
 class Process:
     """A process launched via launch.launch."""
     def __init__(self,cmd):
-        args = shlex.split(cmd)
-        args[0] = which(args[0])
-        self.pid = subprocess.Popen(args).pid
+        self.pid = subprocess.Popen(cmd+" &",shell=True).pid
 
     def kill(self):
         psutil.Process(self.pid).kill()
